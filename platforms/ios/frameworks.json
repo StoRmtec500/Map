@@ -1,0 +1,7 @@
+{
+    "AudioToolbox.framework": 1,
+    "CoreLocation.framework": 2,
+    "CoreBluetooth.framework": 1,
+    "AVFoundation.framework": 1,
+    "Photos.framework": 1
+}
