@@ -19,6 +19,10 @@
                         {
                             "xml": "<feature name=\"Diagnostic\"><param name=\"ios-package\" value=\"Diagnostic\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Device\"><param name=\"ios-package\" value=\"CDVDevice\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -56,6 +60,9 @@
             "PACKAGE_NAME": "io.cordova.hellocordova"
         },
         "cordova.plugins.diagnostic": {
+            "PACKAGE_NAME": "io.cordova.hellocordova"
+        },
+        "cordova-plugin-device": {
             "PACKAGE_NAME": "io.cordova.hellocordova"
         }
     },
@@ -107,6 +114,14 @@
             "pluginId": "cordova.plugins.diagnostic",
             "clobbers": [
                 "cordova.plugins.diagnostic"
+            ]
+        },
+        {
+            "file": "plugins/cordova-plugin-device/www/device.js",
+            "id": "cordova-plugin-device.device",
+            "pluginId": "cordova-plugin-device",
+            "clobbers": [
+                "device"
             ]
         }
     ]

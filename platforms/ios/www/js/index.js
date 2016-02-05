@@ -45,13 +45,21 @@ var app = {
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
+
+        console.log(device.platform)
     }
 };
 
 document.getElementById('btn').addEventListener('click', test, false);
 
 function test(){
-    app.receivedEvent('deviceready');
+    if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry|IEMobile)/)) {
+        document.addEventListener("deviceready", onDeviceReady, false);
+        navigator.notification.alert("iPad", null);
+    } else {
+        //onDeviceReady(); //this is the browser
+        console.log("Browser");
+    }
     cordova.plugins.diagnostic.isLocationEnabled(
         function(e) {
             if (e){

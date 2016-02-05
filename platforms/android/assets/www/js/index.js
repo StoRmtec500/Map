@@ -45,13 +45,22 @@ var app = {
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
+
+        console.log(device.platform);
     }
 };
 
 document.getElementById('btn').addEventListener('click', test, false);
 
 function test(){
-    app.receivedEvent('deviceready');
+    if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry|IEMobile)/)) {
+        navigator.notification.alert("iPad", null);
+    } else {
+        //onDeviceReady(); //this is the browser
+        console.log("Browser");
+        console.log(device.platform);
+        navigator.notification.alert("Browser", null);
+    }
     cordova.plugins.diagnostic.isLocationEnabled(
         function(e) {
             if (e){
@@ -67,12 +76,9 @@ function test(){
 };
 
 function hinweis(){
-    navigator.notification.confirm(
-        'Wollen Sie GPS aktivieren?',
-        onConfirm,
-        'GPS ist nicht aktiviert!',
-        ['Ja','Nein']
-    );
+    var deviceType = (navigator.userAgent.match(/iPad/i))  == "iPad" ? "iPad" : (navigator.userAgent.match(/iPhone/i))  == "iPhone" ? "iPhone" : (navigator.userAgent.match(/Android/i)) == "Android" ? "Android" : (navigator.userAgent.match(/BlackBerry/i)) == "BlackBerry" ? "BlackBerry" : "null";
+
+    alert(deviceType);
 };
 
 function onConfirm(buttonIndex) {
